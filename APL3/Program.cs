@@ -1,6 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
-namespace APL3
+﻿namespace APL3
 {
     internal class Program
     {
