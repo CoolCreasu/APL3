@@ -1,0 +1,9 @@
+﻿public void Main()
+{
+	PrintString("Hello World!")
+}
+
+public void PrintString(string input)
+{
+	Print(input);
+}
