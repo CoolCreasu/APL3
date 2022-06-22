@@ -7,3 +7,5 @@ public void PrintString(string input)
 {
 	Print(input);
 }
+
+123.45232342

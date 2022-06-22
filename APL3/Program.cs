@@ -6,9 +6,15 @@
         {
             Console.WriteLine("Hello World!");
             var source = File.ReadAllText("HelloWorld.apl3");
-            Tokenizer tokenizer = new Tokenizer(source);
+            Lexer tokenizer = new Lexer(source);
 
             string hello = string.Empty;
+        }
+
+        public static void Abort(string message, int errorCode)
+        {
+            Console.WriteLine(message, errorCode);
+            Environment.Exit(errorCode);
         }
     }
 }
