@@ -12,7 +12,7 @@ namespace APL3
 
         public Tokenizer(string source)
         {
-            _source = source;
+            _source = source.ReplaceLineEndings("\n");
         }
     }
 }
