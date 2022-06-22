@@ -12,12 +12,14 @@ namespace APL3
         private char _currentCharacter = default;
         private int _currentIndex = default;
         private int _lineIndex = default;
+        private int _columnIndex = default;
 
         public Tokenizer(string source)
         {
             _source = source.ReplaceLineEndings("\n");
             _currentCharacter = string.IsNullOrEmpty(_source) ? '\0' : _source[_currentIndex];
-            _lineIndex = 1; // To match lines in an editor like Visual Studio
+            _lineIndex = 1; // 1 because text editors
+            _columnIndex = 1; // 1 cause else you end up on 1 before
 
             while (_currentCharacter != '\0')
             {
@@ -28,6 +30,7 @@ namespace APL3
         private void Advance()
         {
             _currentIndex++;    // Iterate the absolute index.
+            _columnIndex++;    // Iterate the index of the character on this current line.
 
             if (_currentIndex >= _source.Length)
             {
@@ -44,6 +47,7 @@ namespace APL3
             {
                 // We reached a new line so iterate the line index.
                 _lineIndex++;
+                _columnIndex = 1;
             }
         }
 
@@ -55,6 +59,7 @@ namespace APL3
             if (char.IsLetter(_currentCharacter))
             {
                 token.Line = _lineIndex;
+                token.Column = _columnIndex;
                 while (char.IsLetter(_currentCharacter))
                 {
                     tokenName.Append(_currentCharacter);

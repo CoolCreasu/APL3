@@ -8,12 +8,15 @@ namespace APL3
 {
     internal class Token
     {
-        public string Name;
+        public string Name = String.Empty;
         public int Line;
+        public int Column;
 
         public override string ToString()
         {
-            return $"{Line}: {Name}";
+            var str = $"({Line},{Column}): {Name}";
+
+            return str;
         }
     }
 }
